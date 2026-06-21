@@ -1,0 +1,401 @@
+WALTIK LABS — COMPLETE WEBSITE DESIGN & ARCHITECTURE PROMPT
+
+Design and develop a world-class, award-winning corporate website for Waltik Labs, a modern technology company focused on Software Engineering, Artificial Intelligence, Cloud Solutions, Product Design, and Digital Innovation.
+
+The website should feel like a blend of Apple, Linear, Stripe, Vercel, Framer, and Awwwards-winning agency websites.
+
+=========================================
+GLOBAL DESIGN SYSTEM
+====================
+
+Style:
+
+* Minimalist
+* Modern
+* Premium
+* Editorial
+* Technology-focused
+* High-end SaaS aesthetic
+
+Color Palette:
+
+* Pure White (#FFFFFF) backgrounds
+* Light Grey (#F3F4F6) accent surfaces
+* Black (#000000) headings
+* Dark Grey (#4B5563) body text
+* Subtle gradients only when necessary
+
+Effects:
+
+* Glassmorphism for navigation bars, floating cards, dropdowns, statistics cards, and CTAs
+* Backdrop blur
+* Soft shadows
+* Thin 1px translucent borders
+* Smooth micro-interactions
+* Premium hover animations
+* Scroll-triggered motion
+* Large amounts of whitespace
+
+Typography:
+
+* Bold oversized headlines
+* Clean modern sans-serif
+* Strong hierarchy
+* Editorial spacing
+* Typography serves as a visual element, not just text
+
+=========================================
+UNIVERSAL HERO SYSTEM
+(APPLIES TO ALL PAGES)
+======================
+
+Every page must begin with the same signature Waltik Labs Hero Layout.
+
+This hero should be typography-first and replace the traditional "text-left image-right" hero design.
+
+Hero Container:
+
+* Large centered rounded rectangle container
+* Maximum width layout
+* Large border radius (32px)
+* White background
+* Subtle border
+* Generous padding
+* Occupies approximately 85–90vh
+
+---
+
+## TOP NAVIGATION
+
+Inside the hero container:
+
+Left:
+
+* Waltik Labs logo
+* Waltik Labs wordmark
+
+Right:
+
+* Navigation links
+* Contextual page links
+* Glassmorphic CTA button
+
+Navigation floats above content and remains lightweight.
+
+---
+
+## GIANT TYPOGRAPHIC HEADLINE
+
+The primary visual element is a massive custom display word.
+
+The word spans 75–85% of the hero width.
+
+Examples:
+
+HOME:
+"BUILD"
+
+SERVICES:
+"CREATE"
+
+WORK:
+"WORK"
+
+ABOUT:
+"HUMAN"
+
+CONTACT:
+"TALK"
+
+Typography Characteristics:
+
+* Ultra bold
+* Geometric
+* Architectural
+* Custom letter shaping
+* Modern poster-like composition
+* Large enough to dominate the entire hero section
+* Functions as both graphic element and headline
+* Letters may contain subtle cut-outs, angular cuts, asymmetrical corners, and futuristic details
+
+This word acts as the visual centerpiece of every page.
+
+---
+
+## SUPPORTING CONTENT
+
+Positioned around the typography.
+
+Top Area:
+
+* Small category label
+* Short descriptor
+
+Under the typography:
+
+* Page-specific description
+* Supporting text
+
+Example:
+
+Engineering digital products,
+platforms and intelligent systems
+that help businesses scale.
+
+---
+
+## BOTTOM LEFT FEATURE CARDS
+
+Under the giant typography.
+
+Three glassmorphic cards aligned horizontally.
+
+Each card contains:
+
+* Icon
+* Short title
+* Supporting text
+
+Examples:
+
+Software Engineering
+Custom digital products
+
+Artificial Intelligence
+Intelligent automation systems
+
+Cloud Infrastructure
+Scalable deployments
+
+Cards are compact and premium.
+
+---
+
+## BOTTOM RIGHT FLOATING CARD
+
+A floating glassmorphic card anchored to the bottom-right.
+
+Contains:
+
+* Mini headline
+* Supporting copy
+* CTA button
+
+Examples:
+
+Start a Project
+
+Transform your idea into a
+world-class digital product.
+
+[Book a Discovery Call]
+
+This card balances the composition visually.
+
+---
+
+## BACKGROUND VISUALS
+
+Instead of large images:
+
+Use:
+
+* Abstract 3D geometric forms
+* Subtle grid overlays
+* Soft gradients
+* Floating light-grey shapes
+* Motion particles
+* Minimal noise textures
+
+Very subtle and premium.
+
+---
+
+## HERO VISUAL HIERARCHY
+
+1. Giant display word
+2. Floating CTA card
+3. Navigation
+4. Feature cards
+5. Supporting text
+
+The typography itself becomes the hero artwork.
+
+=========================================
+PAGE 1 — HOME
+=============
+
+Hero Word:
+BUILD
+
+Supporting Headline:
+Engineering the Future of Digital Experiences
+
+Supporting Copy:
+We design, build, and scale modern software, AI systems, and digital products that drive growth.
+
+Feature Cards:
+
+* Software Engineering
+* AI Solutions
+* Product Design
+
+Floating Card:
+Start a Project
+
+Additional Sections:
+
+1. Trusted Partners / Technology Stack
+
+   * Grid of monochrome logos
+
+2. Services Overview
+
+   * Glassmorphic service cards
+
+3. Featured Work
+
+   * Large project showcases
+
+4. Testimonials
+
+5. Bottom CTA
+
+6. Footer
+
+=========================================
+PAGE 2 — SERVICES
+=================
+
+Hero Word:
+CREATE
+
+Supporting Headline:
+Our Expertise
+
+Supporting Copy:
+From concept to deployment, we build solutions that solve real-world problems.
+
+Feature Cards:
+
+* Software Engineering
+* UI/UX Design
+* Cloud & DevOps
+
+Floating Card:
+Discuss Your Project
+
+Sections:
+
+1. Detailed Services
+2. Technology Stack
+3. Delivery Process Timeline
+4. Bottom CTA
+
+=========================================
+PAGE 3 — WORK
+=============
+
+Hero Word:
+WORK
+
+Supporting Headline:
+Featured Projects
+
+Supporting Copy:
+A collection of products, platforms, and digital experiences we have built.
+
+Feature Cards:
+
+* Web Platforms
+* Mobile Apps
+* AI Products
+
+Floating Card:
+View Case Studies
+
+Sections:
+
+1. Projects Grid
+2. Featured Case Studies
+3. Results & Metrics
+4. Bottom CTA
+
+=========================================
+PAGE 4 — ABOUT
+==============
+
+Hero Word:
+HUMAN
+
+Supporting Headline:
+We Are Waltik Labs
+
+Supporting Copy:
+A team of builders, designers, engineers, and innovators creating technology that matters.
+
+Feature Cards:
+
+* Innovation
+* Excellence
+* Collaboration
+
+Floating Card:
+Meet the Team
+
+Sections:
+
+1. Mission & Vision
+2. Core Values
+3. Team Grid
+4. Company Timeline
+5. Bottom CTA
+
+=========================================
+PAGE 5 — CONTACT
+================
+
+Hero Word:
+TALK
+
+Supporting Headline:
+Let's Build Something Great
+
+Supporting Copy:
+Whether you have an idea, project, or challenge, we're ready to help.
+
+Feature Cards:
+
+* Fast Response
+* Global Reach
+* Strategic Partnership
+
+Floating Card:
+Schedule a Call
+
+Sections:
+
+1. Contact Form
+2. Contact Information
+3. Social Links
+4. FAQ Accordion
+
+=========================================
+ANIMATION SYSTEM
+================
+
+* Smooth page transitions
+* Scroll reveal effects
+* Staggered card animations
+* Floating glassmorphic cards
+* Hover elevation effects
+* Magnetic buttons
+* Subtle parallax movement
+* Typography reveal animations
+* Motion should feel premium and restrained
+
+=========================================
+FINAL GOAL
+==========
+
+Create a visually striking, typography-first, premium technology company website where every page begins with a signature oversized hero composition. The massive display typography acts as the primary visual element, replacing traditional hero imagery, while glassmorphic cards, floating callouts, and minimalist layouts create a memorable, modern, and award-winning Waltik Labs experience.

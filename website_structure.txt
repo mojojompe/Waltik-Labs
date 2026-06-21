@@ -1,0 +1,93 @@
+Waltik Labs - Official Website Structure & Architecture
+
+DESIGN SYSTEM
+- Theme: Minimalist & Modern
+- Colors: Pure White (#FFFFFF) Backgrounds, Light Grey (#F3F4F6) Accents, Black (#000000) Headings, Dark Grey (#4B5563) Paragraph Texts.
+- UI Elements: Glassmorphism (semi-transparent backgrounds with backdrop blur and subtle 1px borders) used for Navbars, floating cards, and dropdowns.
+
+=========================================
+PAGE 1: HOME (index)
+=========================================
+The landing page to capture attention and direct users to key areas.
+
+Sections:
+1. Header / Navbar (Sticky, Glassmorphic)
+   - Logo, Nav Links (Home, Services, Work, About, Contact)
+   - CTA Button ("Start a Project")
+2. Hero Section
+   - Minimalist typography with a bold headline (e.g., "Engineering the Future of Digital Experiences")
+   - Subheadline text in grey.
+   - Primary and Secondary CTA Buttons.
+   - Subtle background animation or minimalist abstract 3D shape in light grey.
+3. Trusted Partners / Tech Stack
+   - Carousel or grid of greyed-out logos.
+4. Services Overview (Glassmorphic Cards)
+   - 3-4 cards highlighting key offerings (e.g., Web Development, Mobile Apps, AI Solutions).
+   - Glassmorphism effect: White/grey translucent background with blur.
+5. Featured Work / Projects
+   - Large, clean imagery or mockups with minimalist descriptions.
+6. Testimonials / Social Proof
+   - Clean text quotes with reviewer names and roles.
+7. Bottom CTA
+   - "Ready to build something great?"
+8. Footer
+   - Multi-column links, social icons, newsletter signup (grey accents).
+
+=========================================
+PAGE 2: SERVICES / SOLUTIONS
+=========================================
+Detailed breakdown of what Waltik Labs offers.
+
+Sections:
+1. Hero
+   - Title: "Our Expertise"
+2. Detailed Service Offerings (Alternating Left/Right Layout)
+   - Service 1 (e.g., Software Engineering) - description, list of technologies.
+   - Service 2 (e.g., UI/UX Design)
+   - Service 3 (e.g., Cloud & DevOps)
+3. Our Process
+   - Step-by-step timeline or grid (Discovery -> Design -> Development -> Deployment).
+4. Bottom CTA
+
+=========================================
+PAGE 3: PORTFOLIO / WORK
+=========================================
+Showcase of past projects and case studies.
+
+Sections:
+1. Hero
+   - Title: "Featured Projects"
+2. Projects Grid
+   - Minimalist grid of project thumbnails. Hover effects reveal project name and category.
+3. Case Study Snippets
+   - Highlighting the problem, solution, and impact of top 2 projects.
+4. Bottom CTA
+
+=========================================
+PAGE 4: ABOUT US
+=========================================
+The story, mission, and team behind Waltik Labs.
+
+Sections:
+1. Hero
+   - Title: "We are Waltik Labs"
+2. Mission & Vision
+   - Clean, large typography stating the company's core values.
+3. The Team
+   - Grid of team members (black & white or desaturated photos to maintain minimalist theme).
+4. Our Journey / Timeline
+   - Milestones of the company.
+
+=========================================
+PAGE 5: CONTACT
+=========================================
+Where users can reach out for inquiries.
+
+Sections:
+1. Hero
+   - Title: "Let's Talk"
+2. Contact Form & Info (Split Layout)
+   - Left: Contact Form (Glassmorphic input fields, clean borders).
+   - Right: Direct email, phone number, physical address (if applicable), and social links.
+3. FAQ Accordion (Optional)
+   - Common questions before starting a project.
