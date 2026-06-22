@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  House, Wrench, FolderOpen, UsersThree, ChatCircle, ArrowUpRight
+  House, Wrench, FolderOpen, UsersThree, ChatCircle, ArrowUpRight, TrendUp
 } from '@phosphor-icons/react'
 import { cn } from '../../lib/utils'
 import CardNav from './CardNav'
@@ -28,10 +28,10 @@ const navLinks = [
   { 
     label: 'Work', href: '/work', icon: FolderOpen,
     subItems: [
-      { label: 'FinTrack Pro', href: '/work#fintrack' },
-      { label: 'MediFlow AI', href: '/work#mediflow' },
-      { label: 'NomadOS', href: '/work#nomados' },
-      { label: 'EcoRoute', href: '/work#ecoroute' },
+      { label: 'iléSure', href: '/work' },
+      { label: 'Safe Route Ai', href: '/work' },
+      { label: 'Outbreak IQ', href: '/work' },
+      { label: 'MediCare', href: '/work' },
     ]
   },
   { 
@@ -47,6 +47,14 @@ const navLinks = [
     subItems: [
       { label: 'Start a Project', href: '/contact#form' },
       { label: 'Office Locations', href: '/contact#offices' },
+    ]
+  },
+  { 
+    label: 'Investors', href: '/investors', icon: TrendUp,
+    subItems: [
+      { label: 'The Opportunity', href: '/investors#opportunity' },
+      { label: 'Traction', href: '/investors#traction' },
+      { label: 'Pitch to Us', href: '/investors#contact' },
     ]
   },
 ]
@@ -68,9 +76,8 @@ const cardNavItems = [
     bgColor: '#058789',
     textColor: '#fff',
     links: [
-      { label: 'About Us', href: '/about', ariaLabel: 'About Waltik Labs' },
-      { label: 'Our Team', href: '/about', ariaLabel: 'Meet the Team' },
-      { label: 'Timeline', href: '/about', ariaLabel: 'Our Journey' },
+      { label: 'About', href: '/about', ariaLabel: 'About Waltik Labs' },
+      { label: 'Team', href: '/about', ariaLabel: 'Meet the Team' },
     ],
   },
   {
@@ -78,9 +85,18 @@ const cardNavItems = [
     bgColor: '#1a1a1a',
     textColor: '#fff',
     links: [
-      { label: 'Start a Project', href: '/contact', ariaLabel: 'Start a Project' },
-      { label: 'Get a Quote', href: '/contact', ariaLabel: 'Get a Quote' },
-      { label: 'Say Hello', href: '/contact', ariaLabel: 'Say Hello' },
+      { label: 'Project', href: '/contact', ariaLabel: 'Start a Project' },
+      { label: 'Quote', href: '/contact', ariaLabel: 'Get a Quote' },
+      { label: 'Talk', href: '/contact', ariaLabel: 'Say Hello' },
+    ],
+  },
+  {
+    label: 'Investors',
+    bgColor: '#f3f4f6',
+    textColor: '#000',
+    links: [
+      { label: 'Overview', href: '/investors', ariaLabel: 'Investors Overview' },
+      { label: 'Pitch Deck', href: 'mailto:support.waltiklabs@gmail.com', ariaLabel: 'Request Pitch Deck' },
     ],
   },
 ]
@@ -116,17 +132,19 @@ export default function Navbar({ inside = false }: NavbarProps) {
             <Link
               to={link.href}
               className={cn(
-                'relative flex items-center gap-1.5 px-4 py-2 text-xs font-body font-medium rounded-full transition-all duration-200',
+                'relative flex items-center gap-1.5 px-4 py-2.5 text-xs font-body font-medium rounded-full transition-all duration-200',
                 isActive
                   ? 'text-white bg-black'
                   : 'text-neutral-600 hover:text-black hover:bg-white hover:shadow-sm'
               )}
             >
-              <link.icon
-                size={14}
-                weight={isActive ? 'fill' : 'regular'}
-                className={isActive ? 'text-white' : 'text-neutral-500'}
-              />
+              {isActive && (
+                <link.icon
+                  size={14}
+                  weight="fill"
+                  className="text-white"
+                />
+              )}
               {link.label}
             </Link>
 
@@ -172,23 +190,6 @@ export default function Navbar({ inside = false }: NavbarProps) {
     </nav>
   )
 
-  /* ── Mobile (CardNav) — shown only on md and below ── */
-  const MobileNav = (
-    <div className="block md:hidden w-full">
-      <CardNav
-        logo="/waltik_nobg.png"
-        logoAlt="Waltik Labs"
-        logoText="Waltik Labs"
-        items={cardNavItems}
-        baseColor="#ffffff"
-        menuColor="#000"
-        ctaLabel="Start a Project"
-        ctaHref="/contact"
-        className="!absolute !top-0 !left-0 !transform-none !w-full"
-      />
-    </div>
-  )
-
   /* ── Desktop Nav — pill design (LINKS ONLY, GLOBALLY STICKY) ── */
   const DesktopNav = (
     <motion.header
@@ -216,7 +217,7 @@ export default function Navbar({ inside = false }: NavbarProps) {
       {/* Logo */}
       <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
         <img src="/waltik_nobg.png" alt="Waltik Labs logo" className="h-7 w-auto" />
-        <span className="font-heading font-bold text-sm text-black tracking-tight">
+        <span className="font-heading font-bold text-xl text-black tracking-tight">
           Waltik Labs
         </span>
       </Link>
@@ -247,7 +248,7 @@ export default function Navbar({ inside = false }: NavbarProps) {
           menuColor="#000"
           ctaLabel="Start a Project"
           ctaHref="/contact"
-          className="fixed"
+          className=""
         />
       </div>
     </>

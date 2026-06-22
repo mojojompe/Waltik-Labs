@@ -1,10 +1,8 @@
-import { useRef } from 'react'
-import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowUpRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
+import { TypewriterText } from '../ui/TypewriterText'
 import Navbar from '../layout/Navbar'
-import { cn } from '../../lib/utils'
-
 export interface FeatureCard {
   icon: React.ElementType
   title: string
@@ -15,44 +13,11 @@ export interface HeroProps {
   word: string
   headline: string
   subtext: string
-  featureCards: FeatureCard[]
+  featureCards?: FeatureCard[]
   floatingCardTitle: string
   floatingCardCopy: string
   floatingCardCta: string
   floatingCardHref: string
-}
-
-/* ── 3D tilt wrapper ─────────────────────────────────────────────── */
-function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [4, -4]), { stiffness: 150, damping: 20 })
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-4, 4]), { stiffness: 150, damping: 20 })
-
-  function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = ref.current?.getBoundingClientRect()
-    if (!rect) return
-    mouseX.set((e.clientX - rect.left) / rect.width - 0.5)
-    mouseY.set((e.clientY - rect.top) / rect.height - 0.5)
-  }
-  function onMouseLeave() {
-    mouseX.set(0)
-    mouseY.set(0)
-  }
-
-  return (
-    <motion.div
-      ref={ref}
-      className={className}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000 }}
-    >
-      {children}
-    </motion.div>
-  )
 }
 
 /* ── Animated background ─────────────────────────────────────────── */
@@ -104,23 +69,23 @@ const letterVariant = {
       delay: 0.1 + i * 0.15,
     },
   }),
-}
+} as any
 
 const fadeUp = {
   hidden: { opacity: 0, y: 15 },
   show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
-}
+} as any
 
 const stagger = {
   hidden: {},
   show: { transition: { staggerChildren: 0.05, delayChildren: 0.3 } },
-}
+} as any
 
 export default function Hero({
   word,
   headline,
   subtext,
-  featureCards,
+  featureCards = [],
   floatingCardTitle,
   floatingCardCopy,
   floatingCardCta,
@@ -150,19 +115,22 @@ export default function Hero({
           <div className="relative z-10 flex-1 flex flex-col px-5 sm:px-8 md:px-10 pb-7 sm:pb-9 pt-16 sm:pt-0">
             {/* Label */}
             <motion.div
-              className="mt-8 sm:mt-10 md:mt-12 mb-8 sm:mb-0"
+              className="relative z-10 mt-8 sm:mt-10 md:mt-10 mb-8 sm:mb-0 pointer-events-auto"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: 0.1 }}
             >
-              <span className="flex items-center justify-center sm:justify-start gap-2 text-xs font-body font-medium tracking-[0.22em] uppercase text-neutral-400">
-                <span className="w-6 h-px bg-[#058789] inline-block opacity-60 hidden sm:block" />
-                <span className="text-center sm:text-left">{headline}</span>
+              <span className="flex items-center justify-start gap-3 text-[11px] sm:text-xs font-body font-semibold tracking-[0.2em] sm:tracking-[0.22em] uppercase text-black/60">
+                <span className="w-4 sm:w-6 h-px bg-[#058789] inline-block opacity-60" />
+                <span className="text-left"><TypewriterText text={headline} /></span>
               </span>
             </motion.div>
 
-            {/* Giant 3D word */}
-            <div className="mt-1 sm:mt-2 flex-1 flex items-start overflow-hidden w-full" style={{ perspective: '800px' }}>
+            {/* Giant 3D word (Background Depth Effect on desktop, normal flow on mobile) */}
+            <div
+              className="relative md:absolute md:inset-0 flex-1 md:flex-none flex items-center justify-center overflow-hidden md:overflow-visible z-0 pointer-events-none w-full h-full py-8 md:py-0"
+              style={{ perspective: '800px' }}
+            >
               <h1
                 className="hero-word"
                 aria-label={word}
@@ -175,8 +143,8 @@ export default function Hero({
                     initial="hidden"
                     animate="show"
                     className="inline-block"
-                    style={{ 
-                      transformStyle: 'preserve-3d', 
+                    style={{
+                      transformStyle: 'preserve-3d',
                       display: 'inline-block',
                       WebkitFontSmoothing: 'antialiased'
                     }}
@@ -188,17 +156,19 @@ export default function Hero({
             </div>
 
             {/* Bottom row */}
-            <div className="mt-auto flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-8 pt-4">
+            <div className="relative z-10 mt-auto flex flex-col lg:flex-row lg:items-end gap-6 lg:gap-8 pt-4 pointer-events-auto">
               {/* Left */}
-              <div className="flex-1 flex flex-col gap-5">
-                <motion.p
-                  className="text-sm sm:text-base font-body text-neutral-500 leading-relaxed max-w-sm"
+              <div className="flex-1 flex flex-col gap-3">
+                <motion.div
+                  className="glass rounded-3xl p-5 shadow-lg shadow-black/5 max-w-sm"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                 >
-                  {subtext}
-                </motion.p>
+                  <p className="text-sm sm:text-base font-body font-medium text-black leading-relaxed">
+                    {subtext}
+                  </p>
+                </motion.div>
 
                 {/* Feature cards */}
                 <motion.div
@@ -207,15 +177,15 @@ export default function Hero({
                   initial="hidden"
                   animate="show"
                 >
-                  {featureCards.map((card) => (
+                  {featureCards && featureCards.length > 0 && featureCards.map((card) => (
                     <motion.div
                       key={card.title}
                       variants={fadeUp}
-                      className="glass rounded-2xl px-4 py-3.5 flex items-center gap-3 flex-1 cursor-default shadow-sm shadow-black/4"
-                      whileHover={{ y: -3, boxShadow: '0 16px 48px rgba(0,0,0,0.09), 0 0 0 1px rgba(5,135,137,0.15)' }}
+                      className="glass rounded-2xl px-4 py-3.5 flex items-center gap-3 flex-1 cursor-default shadow-lg shadow-black/5"
+                      whileHover={{ y: -4, boxShadow: '0 24px 60px rgba(0,0,0,0.12)' }}
                     >
-                      <span className="w-9 h-9 bg-[#058789]/10 rounded-xl flex items-center justify-center shrink-0">
-                        <card.icon size={18} weight="fill" className="text-[#058789]" />
+                      <span className="flex items-center justify-center shrink-0">
+                        <card.icon size={22} weight="fill" className="text-[#058789]" />
                       </span>
                       <div>
                         <p className="text-xs font-heading font-semibold text-black leading-tight">{card.title}</p>

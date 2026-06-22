@@ -1,15 +1,16 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import {
   Code, Robot, PaintBrush, Cloud,
-  ArrowUpRight, CheckCircle, Plus, Minus,
-  GitBranch, Gear, Package, ChartBar,
+  ArrowUpRight,
+  Check, CheckCircle,
+  Package, ChartBar,
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/sections/Hero'
 import Footer from '../components/layout/Footer'
-import { GlassCard, SectionLabel, Badge } from '../components/ui/GlassCard'
+import { SectionLabel, Badge } from '../components/ui/GlassCard'
 import { Reveal } from '../components/ui/Button'
+import { SEO } from '../components/ui/SEO'
 
 const heroFeatureCards = [
   { icon: Code, title: 'Software Engineering', subtitle: 'Custom digital products' },
@@ -74,8 +75,8 @@ function ServiceRow({ service, idx }: { service: typeof services[0]; idx: number
         {/* Text side */}
         <div className="flex-1">
           <div className="flex items-center gap-3 mb-5">
-            <div className="w-11 h-11 bg-black rounded-xl flex items-center justify-center">
-              <service.icon size={20} weight="fill" className="text-white" />
+            <div className="w-11 h-11 flex items-center justify-center">
+              <service.icon size={24} weight="fill" className="text-black" />
             </div>
             <span className="text-xs font-body font-medium uppercase tracking-widest text-neutral-400">
               Service 0{idx + 1}
@@ -99,8 +100,8 @@ function ServiceRow({ service, idx }: { service: typeof services[0]; idx: number
         {/* Visual side */}
         <div className="flex-1 w-full">
           <div className="glass rounded-2xl p-8 flex flex-col justify-between min-h-[280px]">
-            <div className="w-12 h-12 bg-black/6 rounded-xl flex items-center justify-center mb-6">
-              <service.icon size={24} weight="fill" className="text-black/40" />
+            <div className="w-12 h-12 flex items-center justify-center mb-6">
+              <service.icon size={26} weight="duotone" className="text-black" />
             </div>
             <div>
               <p className="font-heading font-semibold text-lg text-black mb-2">{service.title}</p>
@@ -120,8 +121,35 @@ function ServiceRow({ service, idx }: { service: typeof services[0]; idx: number
 export default function Services() {
   return (
     <div className="bg-[#F3F4F6] min-h-screen">
+      <SEO 
+        title="Our Services | Waltik Labs"
+        description="Explore our expertise in Software Engineering, UI/UX Design, Cloud & DevOps, and AI & Machine Learning."
+        canonicalUrl="https://waltiklabs.com/services"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "Service",
+              "name": "Software Engineering"
+            },
+            {
+              "@type": "Service",
+              "name": "UI/UX Design"
+            },
+            {
+              "@type": "Service",
+              "name": "Cloud & DevOps"
+            },
+            {
+              "@type": "Service",
+              "name": "AI & Machine Learning"
+            }
+          ]
+        }}
+      />
       <Hero
-        word="Innovation"
+        word="SERVICES"
         headline="Our Expertise"
         subtext="From concept to deployment, we build solutions that solve real-world problems."
         featureCards={heroFeatureCards}
@@ -182,8 +210,8 @@ export default function Services() {
           {process.map((p, i) => (
             <Reveal key={p.step} delay={i * 0.1} direction="up">
               <div className="relative z-10 flex flex-col items-center text-center gap-4">
-                <div className="w-11 h-11 bg-black rounded-xl flex items-center justify-center shadow-lg">
-                  <p.icon size={18} weight="fill" className="text-white" />
+                <div className="w-11 h-11 flex items-center justify-center">
+                  <span className="font-heading font-bold text-black text-xl">0{i+1}</span>
                 </div>
                 <span className="text-xs font-body font-medium text-neutral-400 uppercase tracking-widest">{p.step}</span>
                 <h4 className="font-heading font-bold text-lg text-black">{p.title}</h4>
@@ -211,8 +239,8 @@ export default function Services() {
               >
                 <div className="flex gap-5 bg-white border border-black/5 card-shadow rounded-2xl p-5 relative overflow-hidden h-full">
                   <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-black/5 to-transparent pointer-events-none z-50 opacity-40 md:hidden" />
-                  <div className="w-10 h-10 bg-black rounded-xl flex items-center justify-center shrink-0 relative z-10">
-                    <p.icon size={16} weight="fill" className="text-white" />
+                  <div className="w-10 h-10 flex items-center justify-center shrink-0 relative z-10">
+                    <Check size={20} weight="bold" className="text-[#058789]" />
                   </div>
                   <div className="relative z-10">
                     <span className="text-xs font-body text-neutral-400 uppercase tracking-widest">{p.step}</span>

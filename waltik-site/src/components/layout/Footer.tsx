@@ -23,7 +23,7 @@ const footerLinks = {
 const socials = [
   { icon: TwitterLogo, href: '#', label: 'Twitter' },
   { icon: LinkedinLogo, href: '#', label: 'LinkedIn' },
-  { icon: GithubLogo, href: '#', label: 'GitHub' },
+  { icon: GithubLogo, href: 'https://github.com/Waltik-Technologies', label: 'GitHub' },
   { icon: InstagramLogo, href: '#', label: 'Instagram' },
 ]
 
@@ -37,7 +37,7 @@ export default function Footer() {
             {/* Logo + tagline */}
             <div className="flex flex-col gap-4 md:max-w-xs">
               <div className="flex items-center gap-3">
-                <img src="/waltik_nobg.png" alt="Waltik Labs" className="h-10 w-auto brightness-0 invert" />
+                <img src="/waltik_nobg.png" alt="Waltik Labs" className="h-10 w-auto" />
                 <span className="font-heading font-bold text-lg">Waltik Labs</span>
               </div>
               <p className="text-sm text-white/50 font-body leading-relaxed">

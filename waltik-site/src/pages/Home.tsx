@@ -2,15 +2,18 @@ import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import {
   Code, Robot, PaintBrush, Cloud,
-  ArrowUpRight, Star, CheckCircle,
+  ArrowUpRight, Star,
   Quotes, Users, Briefcase, Rocket,
   FigmaLogo, StripeLogo, SlackLogo, GithubLogo, DiscordLogo, SpotifyLogo
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/sections/Hero'
 import Footer from '../components/layout/Footer'
-import { GlassCard, SectionLabel, Badge } from '../components/ui/GlassCard'
+import { GlassCard, SectionLabel } from '../components/ui/GlassCard'
 import { Reveal } from '../components/ui/Button'
+import { SEO } from '../components/ui/SEO'
+import DOMCircularGallery from '../components/ui/DOMCircularGallery'
+import CardSwap, { Card } from '../components/ui/CardSwap'
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 const heroFeatureCards = [
@@ -147,6 +150,22 @@ function StatCard({ value, label, icon: Icon, bg, text, iconColor, labelColor }:
 export default function Home() {
   return (
     <div className="bg-[#F3F4F6] min-h-screen">
+      <SEO 
+        title="Waltik Labs | Modern Digital Products & Solutions"
+        description="We design, build, and scale modern software, AI systems, and digital products that drive growth."
+        canonicalUrl="https://waltiklabs.com"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Waltik Labs",
+          "url": "https://waltiklabs.com",
+          "description": "Engineering the Future of Digital Experiences.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Waltik Labs"
+          }
+        }}
+      />
       {/* Hero */}
       <Hero
         word="WALTIK"
@@ -176,10 +195,20 @@ export default function Home() {
       {/* Stats with grid background */}
       <section className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20 lg:py-28">
         <div className="absolute inset-0 grid-lines opacity-60 pointer-events-none" />
-        <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((s, i) => (
+        {/* Desktop Grid */}
+        <div className="hidden lg:grid relative z-10 grid-cols-4 gap-4">
+          {stats.map((s) => (
             <StatCard key={s.label} {...s} />
           ))}
+        </div>
+
+        {/* Mobile Circular Gallery */}
+        <div className="lg:hidden relative z-10 overflow-hidden -mx-4 sm:-mx-6 w-full flex justify-center">
+          <DOMCircularGallery bendStrength={60} rotationStrength={10}>
+            {stats.map((s) => (
+              <StatCard key={s.label} {...s} />
+            ))}
+          </DOMCircularGallery>
         </div>
       </section>
 
@@ -204,7 +233,7 @@ export default function Home() {
             <GlassCard className="col-span-2 row-span-1 bg-white border border-black/5 flex overflow-hidden p-0" hover delay={0.1}>
               <div className="flex-1 p-8 flex flex-col justify-between">
                 <div className="flex items-start justify-between">
-                  <div className="w-12 h-12 bg-[#058789]/10 rounded-xl flex items-center justify-center">
+                  <div className="w-12 h-12 flex items-center justify-center">
                     <Code size={24} weight="fill" className="text-[#058789]" />
                   </div>
                   <ArrowUpRight size={20} className="text-black/20" />
@@ -229,7 +258,7 @@ export default function Home() {
             {/* Top-right */}
             <GlassCard className="col-span-1 row-span-1 bg-white border border-black/5 flex flex-col justify-between overflow-hidden p-0" hover delay={0.15}>
               <div className="p-6 flex-1 flex flex-col">
-                <div className="w-10 h-10 bg-[#058789]/10 rounded-xl flex items-center justify-center mb-auto">
+                <div className="w-10 h-10 flex items-center justify-center mb-auto">
                   <Robot size={20} weight="fill" className="text-[#058789]" />
                 </div>
                 <div className="mt-4">
@@ -248,7 +277,7 @@ export default function Home() {
                 <img src="/illustrations/product_design.png" alt="Product Design" className="w-full h-full object-cover" />
               </div>
               <div className="p-6 flex-1 flex flex-col justify-end">
-                <div className="w-10 h-10 bg-[#058789]/10 rounded-xl flex items-center justify-center mb-4">
+                <div className="w-10 h-10 flex items-center justify-center mb-4">
                   <PaintBrush size={20} weight="fill" className="text-[#058789]" />
                 </div>
                 <div>
@@ -267,12 +296,12 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -4, boxShadow: '0 20px 60px rgba(0,0,0,0.15)' }}
             >
-              <div className="w-[40%] h-full zoom-image-wrap bg-black/20 mix-blend-overlay">
+              <div className="w-[40%] h-full zoom-image-wrap bg-black/20">
                 <img src="/illustrations/cloud_infra.png" alt="Cloud Infrastructure" className="w-full h-full object-cover" />
               </div>
               <div className="flex-1 p-8 flex flex-col justify-between relative z-10">
                 <div className="flex items-start justify-between">
-                  <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-md">
+                  <div className="w-12 h-12 flex items-center justify-center backdrop-blur-md">
                     <Cloud size={24} weight="fill" className="text-white" />
                   </div>
                   <Link to="/services" className="text-xs font-body font-semibold text-white/70 hover:text-white transition-colors flex items-center gap-1 bg-black/20 px-3 py-1.5 rounded-full">
@@ -294,39 +323,26 @@ export default function Home() {
             </motion.div>
           </div>
 
-          {/* Mobile scroll stack */}
-          <div className="lg:hidden flex flex-col gap-4 pb-12 relative">
-            {services.map((s, i) => (
-              <div
-                key={s.title}
-                className="mobile-sticky-stack"
-                style={{
-                  "--mobile-top": `calc(7rem + ${i * 14}px)`,
-                  "--mobile-mt": i === 0 ? '0' : '2.5rem',
-                  "--mobile-z": i + 10,
-                } as React.CSSProperties}
-              >
-                <GlassCard 
-                  delay={i * 0.08} 
-                  className="flex flex-col gap-0 p-0 bg-white border border-black/5 overflow-hidden relative w-full h-full"
-                >
-                  <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-black/5 to-transparent pointer-events-none z-50 opacity-40 md:hidden" />
-                  <div className="h-48 zoom-image-wrap bg-neutral-100">
-                    <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="p-6">
-                    <div className="w-10 h-10 bg-[#058789]/10 rounded-xl flex items-center justify-center mb-4">
-                      <s.icon size={20} weight="fill" className="text-[#058789]" />
+          {/* Mobile CardSwap */}
+          <div className="lg:hidden flex flex-col gap-4 pb-8 relative items-center w-full max-w-full overflow-hidden">
+            <div className="mt-8 mb-4 h-[350px] w-full flex justify-center items-center">
+              <CardSwap width={300} height={320} cardDistance={12} verticalDistance={12} pauseOnHover={true}>
+                {services.map((s) => (
+                  <Card key={s.title} className="bg-white border border-black/5 flex flex-col gap-0 p-0 overflow-hidden card-shadow">
+                    <div className="h-40 zoom-image-wrap bg-neutral-100">
+                      <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
                     </div>
-                    <h3 className="font-heading font-bold text-xl text-black mb-2">{s.title}</h3>
-                    <p className="text-sm text-neutral-500 font-body leading-relaxed mb-4">{s.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {s.tags.map(t => <Badge key={t}>{t}</Badge>)}
+                    <div className="p-4 flex flex-col h-full bg-white flex-1">
+                      <div className="w-8 h-8 flex items-center justify-center mb-3 shrink-0">
+                        <s.icon size={18} weight="fill" className="text-[#058789]" />
+                      </div>
+                      <h3 className="font-heading font-bold text-lg text-black mb-1.5">{s.title}</h3>
+                      <p className="text-xs text-neutral-500 font-body leading-relaxed mb-3 line-clamp-3">{s.description}</p>
                     </div>
-                  </div>
-                </GlassCard>
-              </div>
-            ))}
+                  </Card>
+                ))}
+              </CardSwap>
+            </div>
           </div>
         </div>
       </section>
@@ -431,7 +447,7 @@ export default function Home() {
                     <Quotes size={32} weight="fill" className="text-[#058789]/20 relative z-10" />
                     <p className="text-sm font-body text-neutral-600 leading-relaxed flex-1 italic relative z-10">&ldquo;{t.quote}&rdquo;</p>
                     <div className="flex items-center gap-4 pt-4 border-t border-black/5 relative z-10">
-                      <div className="w-10 h-10 bg-[#058789]/10 rounded-full flex items-center justify-center">
+                      <div className="w-10 h-10 flex items-center justify-center text-[#058789]">
                         <span className="font-heading font-bold text-sm text-[#058789]">
                           {t.name.charAt(0)}
                         </span>

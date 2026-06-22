@@ -71,12 +71,19 @@
 
   /* ── Hero word ───────────────────────────────────────────────── */
   .hero-word {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 800;
-    font-size: clamp(4rem, 18vw, 28rem); /* Reduced minimum for mobile scaling */
-    line-height: 1;
-    letter-spacing: -0.04em;
-    color: #000000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 600;
+    font-size: clamp(4rem, 28vw, 52rem); /* Massively increased size */
+    line-height: 0.8;
+    letter-spacing: 0.05em;
+    transform: scaleY(1.3); /* Stretch text vertically for extra height */
+    
+    /* Black Glassmorphic & Shadow (Compatible with Framer Motion) */
+    color: rgba(0, 0, 0, 0.65);
+    text-shadow: 
+      0 1px 1px rgba(119, 108, 108, 0.5), /* Slight inner reflection */
+      0 15px 35px rgba(0, 0, 0, 0.25); /* Deep shadow */
+    
     user-select: none;
     transform-style: preserve-3d;
     white-space: nowrap;
@@ -85,11 +92,73 @@
     width: 100%;
   }
 
+  @media (min-width: 768px) {
+    .hero-word {
+      margin-top: 2vh; /* Give it some breathing room from the headline */
+    }
+  }
+
   /* ── Teal accent helpers ─────────────────────────────────────── */
   .text-teal      { color: #058789; }
   .bg-teal        { background-color: #058789; }
   .border-teal    { border-color: #058789; }
   .ring-teal      { --tw-ring-color: #058789; }
+
+  /* ── Universal 3D Glassy Overlay Buttons ─────────────────────── */
+  
+  /* Primary & Main CTAs */
+  a[class*="bg-black"][class*="text-white"],
+  button[class*="bg-black"][class*="text-white"],
+  .btn-primary,
+  .card-nav-cta-button,
+  a[class*="bg-[#058789]"][class*="text-white"] {
+    /* The base color remains what Tailwind set (bg-black or bg-teal).
+       We add the semi-transparent gradient overlay to catch the light. */
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+    
+    /* 3D Edges */
+    border-width: 1.5px !important;
+    border-style: solid !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    border-top-color: rgba(255, 255, 255, 0.6) !important;
+    border-left-color: rgba(255, 255, 255, 0.4) !important;
+    
+    /* Depth Shadow */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  /* Hover State for Primary CTAs */
+  a[class*="bg-black"][class*="text-white"]:hover,
+  button[class*="bg-black"][class*="text-white"]:hover,
+  .btn-primary:hover,
+  .card-nav-cta-button:hover,
+  a[class*="bg-[#058789]"][class*="text-white"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35) !important;
+    /* Brighten the overlay on hover */
+    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 100%) !important;
+  }
+
+  /* Secondary & Ghost Buttons */
+  button[class*="bg-transparent"],
+  .btn-ghost,
+  .btn-secondary {
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.05) 0%, rgba(255, 255, 255, 0.2) 100%) !important;
+    border-width: 1.5px !important;
+    border-style: solid !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    border-top-color: rgba(255, 255, 255, 0.6) !important;
+    border-left-color: rgba(255, 255, 255, 0.4) !important;
+  }
+
+  /* Glass Navlinks container */
+  nav.bg-black\/5 {
+    background: rgba(0, 0, 0, 0.03) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+  }
 
   /* ── Marquee ─────────────────────────────────────────────────── */
   .marquee-track { animation: marquee 36s linear infinite; }

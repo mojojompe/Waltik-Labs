@@ -1,7 +1,8 @@
 import { ArrowLeft } from '@phosphor-icons/react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
+import { SEO } from '../components/ui/SEO'
 
 const PrivacyContent = () => (
   <div className="prose prose-neutral max-w-none font-body text-neutral-600 leading-relaxed space-y-6">
@@ -111,10 +112,15 @@ const TermsContent = () => (
 )
 
 export default function Legal({ title }: { title: string }) {
-  const { pathname } = useLocation()
+
   
   return (
     <div className="bg-[#F3F4F6] min-h-screen flex flex-col">
+      <SEO 
+        title={`${title} | Waltik Labs`}
+        description={`Read the ${title} for Waltik Labs.`}
+        noindex={true}
+      />
       <div className="px-5 sm:px-8 pt-5 sm:pt-6">
         <Navbar inside />
       </div>

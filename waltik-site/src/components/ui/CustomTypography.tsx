@@ -44,7 +44,7 @@ const letterVariant = {
       ease: [0.22, 1, 0.36, 1],
     },
   }),
-}
+} as any
 
 export default function CustomTypography({ className }: { className?: string }) {
   return (

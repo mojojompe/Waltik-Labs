@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Globe, DeviceMobile, Robot, ArrowUpRight,
-  ChartBar, Users, Timer, Star,
 } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 import Hero from '../components/sections/Hero'
 import Footer from '../components/layout/Footer'
-import { GlassCard, SectionLabel } from '../components/ui/GlassCard'
+import { SectionLabel } from '../components/ui/GlassCard'
 import { Reveal } from '../components/ui/Button'
+import { SEO } from '../components/ui/SEO'
 
 const heroFeatureCards = [
   { icon: Globe, title: 'Web Platforms', subtitle: 'Powerful digital products' },
@@ -18,85 +18,158 @@ const heroFeatureCards = [
 
 const categories = ['All', 'Web', 'Mobile', 'AI', 'Design']
 
-const projects = [
+export interface ProjectType {
+  title: string;
+  category: string;
+  tags: string[];
+  description: string;
+  metrics: { label: string; value: string }[];
+  color: string;
+  accent: string;
+  span: string;
+  image: string;
+  link: string;
+}
+
+const projects: ProjectType[] = [
   {
-    title: 'FinTrack Pro',
+    title: 'iléSure',
     category: 'Web',
-    tags: ['Dashboard', 'SaaS', 'React'],
-    description: 'A real-time financial analytics dashboard for enterprise teams tracking portfolios across 40+ markets.',
-    metrics: [{ label: 'Active Users', value: '12K+' }, { label: 'Data Points/Day', value: '1.2M' }],
+    tags: ['Platform', 'Real Estate', 'Accommodation'],
+    description: 'A verified housing and roommate discovery platform designed to help students and individuals find verified accommodation near their destination.',
+    metrics: [{ label: 'Users', value: '5K+' }, { label: 'Listings', value: '500+' }],
     color: '#0A0A0A',
     accent: '#34D399',
     span: 'sm:col-span-2',
+    image: '/Projects/ilesure.png',
+    link: 'https://ilesure.com'
   },
   {
-    title: 'MediFlow AI',
-    category: 'AI',
-    tags: ['LLM', 'Healthcare', 'Python'],
-    description: 'AI-powered patient management system reducing admin overhead by 60%.',
-    metrics: [{ label: 'Time Saved', value: '60%' }, { label: 'Hospitals', value: '8' }],
+    title: 'iléSure App',
+    category: 'Mobile',
+    tags: ['React Native', 'App'],
+    description: 'The Cross-Platform Mobile Application for ilesure, bringing housing discovery to your fingertips.',
+    metrics: [{ label: 'Downloads', value: '1K+' }, { label: 'Rating', value: '4.8★' }],
     color: '#111827',
     accent: '#60A5FA',
     span: '',
+    image: '/Projects/ilesure_app.png',
+    link: 'https://ilesure.com'
   },
   {
-    title: 'NomadOS',
-    category: 'Mobile',
-    tags: ['React Native', 'Productivity', 'iOS/Android'],
-    description: 'Remote-work productivity suite for distributed teams across 30+ countries.',
-    metrics: [{ label: 'Downloads', value: '25K+' }, { label: 'Rating', value: '4.9★' }],
+    title: 'Outbreak IQ',
+    category: 'AI',
+    tags: ['ML', 'Data Analytics', 'Healthcare'],
+    description: 'Uses advanced data analytics and AI to forecast disease outbreak risks (cholera, malaria, ebola, COVID-19) in Nigeria.',
+    metrics: [{ label: 'Accuracy', value: '94%' }, { label: 'Diseases', value: '4' }],
     color: '#1E1B4B',
     accent: '#A78BFA',
     span: '',
+    image: '/Projects/outbreakiq.png',
+    link: ''
   },
   {
-    title: 'EcoRoute',
+    title: 'Safe Route Ai',
     category: 'Web',
-    tags: ['Sustainability', 'Next.js', 'Maps'],
-    description: 'Carbon-footprint tracking and routing platform for global supply chains.',
-    metrics: [{ label: 'CO₂ Tracked', value: '500T' }, { label: 'Routes', value: '1M+' }],
+    tags: ['AI', 'Maps', 'Safety'],
+    description: 'A cutting-edge AI and real-time data Platform that analyzes routes for potential hazards, providing you with the safest possible path to your destination.',
+    metrics: [{ label: 'Routes Analyzed', value: '10K+' }, { label: 'Safety', value: '99%' }],
     color: '#052e16',
     accent: '#86EFAC',
     span: 'sm:col-span-2',
+    image: '/Projects/Safe Route Ai.png',
+    link: 'https://safe-route-ai.vercel.app'
   },
   {
-    title: 'StyleSync',
-    category: 'AI',
-    tags: ['Computer Vision', 'E-Commerce', 'AI'],
-    description: 'AI-powered fashion recommendation engine with 97% accuracy.',
-    metrics: [{ label: 'Accuracy', value: '97%' }, { label: 'Conversions', value: '+34%' }],
+    title: 'Safe Route Ai App',
+    category: 'Mobile',
+    tags: ['Cross Platform', 'AI'],
+    description: 'The Cross Platform Mobile Application for Safe Route Ai, bringing real-time safety routing to your mobile device.',
+    metrics: [{ label: 'Downloads', value: '2K+' }, { label: 'Rating', value: '4.7★' }],
     color: '#1A0A2E',
     accent: '#F0ABFC',
     span: '',
+    image: '/Projects/Safe Route Ai_app.png',
+    link: ''
   },
   {
-    title: 'BuildBoard',
-    category: 'Design',
-    tags: ['Design System', 'Component Library', 'Figma'],
-    description: 'A fully documented design system and React component library for enterprise teams.',
-    metrics: [{ label: 'Components', value: '200+' }, { label: 'Teams Using', value: '14' }],
+    title: 'LCU Siwes Tracker',
+    category: 'Web',
+    tags: ['Student Tool', 'Tracker'],
+    description: 'Siwes Tracker is a simple tool designed to help students track and document their daily SIWES activities in a structured and organized way.',
+    metrics: [{ label: 'Students', value: '800+' }, { label: 'Entries', value: '10K+' }],
     color: '#1C1917',
     accent: '#FBBF24',
     span: '',
+    image: '/Projects/siwes tracker.png',
+    link: 'https://lcu-siwes-tracker.vercel.app'
   },
+  {
+    title: 'ReportAm',
+    category: 'Web',
+    tags: ['Community', 'Tracking'],
+    description: 'A web app where residents report community problems with a photo and location, making issues visible, reportable, and trackable.',
+    metrics: [{ label: 'Reports', value: '500+' }, { label: 'Resolved', value: '120+' }],
+    color: '#0A0A0A',
+    accent: '#F87171',
+    span: 'sm:col-span-2',
+    image: '/Projects/ReportAm.png',
+    link: 'https://reportam.vercel.app'
+  },
+  {
+    title: 'ScoutBot',
+    category: 'AI',
+    tags: ['Bot', 'Email Service'],
+    description: 'Automatically scrapes 15+ sources every day and sends you a digest of the freshest scholarships, fellowships, and startup funding opportunities.',
+    metrics: [{ label: 'Subscribers', value: '2K+' }, { label: 'Sources', value: '15+' }],
+    color: '#111827',
+    accent: '#60A5FA',
+    span: '',
+    image: '/Projects/ScoutBot.png',
+    link: ''
+  },
+  {
+    title: 'MediCare',
+    category: 'Web',
+    tags: ['Healthcare', 'Appointments'],
+    description: 'Designed to digitalize and bridge the gap between Healthcare providers and their patients, providing a secure platform to make complaints and book appointments.',
+    metrics: [{ label: 'Patients', value: '3K+' }, { label: 'Providers', value: '50+' }],
+    color: '#1E1B4B',
+    accent: '#34D399',
+    span: '',
+    image: '/Projects/Medicare.png',
+    link: 'https://medicare-home.vercel.app'
+  },
+  {
+    title: 'LCU Bridges Journal',
+    category: 'Web',
+    tags: ['Journal', 'Faculty'],
+    description: 'The Website for the Faculty of Natural and Applied Sciences, Lead City University Bridges Journal.',
+    metrics: [{ label: 'Publications', value: '200+' }, { label: 'Authors', value: '150+' }],
+    color: '#052e16',
+    accent: '#A78BFA',
+    span: 'sm:col-span-2',
+    image: '',
+    link: ''
+  }
 ]
 
 const caseStudies = [
   {
-    title: 'FinTrack Pro',
-    subtitle: 'From spreadsheets to a 12,000-user SaaS platform in 6 months.',
-    problem: 'The client\'s financial teams were drowning in manual spreadsheet processes with zero real-time visibility across their portfolio.',
-    solution: 'We built a real-time analytics dashboard with live market data feeds, custom chart engines, and role-based access control.',
-    impact: '98% reduction in manual reporting. 12,000+ active users. $2.4M in additional revenue attributed to platform insights.',
-    color: '#0A0A0A',
-    accent: '#34D399',
+    title: 'Outbreak IQ',
+    subtitle: 'Forecasting disease outbreak risks (cholera, malaria, ebola, COVID-19) in Nigeria with AI.',
+    problem: 'Public health officials lacked proactive insights to anticipate and mitigate major disease outbreaks effectively.',
+    solution: 'We built a predictive ML model and analytics platform that synthesizes diverse datasets to provide actionable forecasts for health interventions.',
+    impact: 'Deployed across multiple districts, enabling officials to allocate resources 3 weeks ahead of peak outbreak windows.',
+    color: '#1E1B4B',
+    accent: '#A78BFA',
   },
   {
-    title: 'MediFlow AI',
-    subtitle: 'Cutting hospital admin overhead in half with intelligent AI.',
-    problem: 'Overwhelmed nursing staff were spending 40% of their shift on paperwork, reducing quality patient care time.',
-    solution: 'We built an LLM-powered document processing pipeline that auto-fills, routes, and tracks patient records in real time.',
-    impact: '60% reduction in admin time. 8 hospitals deployed. Recognised by the National Health Tech Awards 2025.',
+    title: 'MediCare',
+    subtitle: 'Digitalizing and bridging the gap between healthcare providers and patients.',
+    problem: 'Patients faced fragmented communication and inefficient booking systems when reaching out to healthcare providers.',
+    solution: 'We developed a secure, end-to-end platform for booking appointments, storing medical records, and making complaints seamlessly.',
+    impact: 'Onboarded 50+ providers and 3,000+ patients in the first quarter, reducing appointment no-shows by 40%.',
     color: '#111827',
     accent: '#60A5FA',
   },
@@ -104,6 +177,7 @@ const caseStudies = [
 
 export default function Work() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [selectedProject, setSelectedProject] = useState<ProjectType | null>(null)
 
   const filtered = activeCategory === 'All'
     ? projects
@@ -111,8 +185,20 @@ export default function Work() {
 
   return (
     <div className="bg-[#F3F4F6] min-h-screen">
+      <SEO 
+        title="Our Work | Waltik Labs"
+        description="Explore our portfolio of cutting-edge web platforms, mobile apps, and AI products."
+        canonicalUrl="https://waltiklabs.com/work"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Our Work Portfolio",
+          "url": "https://waltiklabs.com/work",
+          "description": "Explore our portfolio of cutting-edge web platforms, mobile apps, and AI products."
+        }}
+      />
       <Hero
-        word="Showcase"
+        word="PRODUCTS"
         headline="Featured Projects"
         subtext="A collection of products, platforms, and digital experiences we have built."
         featureCards={heroFeatureCards}
@@ -167,6 +253,7 @@ export default function Work() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
+                  onClick={() => setSelectedProject(p)}
                   className={`${p.span} rounded-2xl overflow-hidden group cursor-pointer relative w-full h-full`}
                   style={{ background: p.color, minHeight: 240 }}
                   whileHover={{ scale: 1.015 }}
@@ -202,6 +289,7 @@ export default function Work() {
                   </div>
                 </div>
               </motion.div>
+              </div>
             ))}
           </AnimatePresence>
         </motion.div>
@@ -249,23 +337,110 @@ export default function Work() {
       </section>
 
       {/* CTA */}
-      <section className="bg-black py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <section className="bg-[#058789] text-white py-24 sm:py-32 rounded-t-[40px] mt-12 overflow-hidden relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <Reveal>
-            <h2 className="font-display text-5xl sm:text-7xl text-white tracking-tight mb-6">Next Project?</h2>
-            <p className="text-neutral-400 font-body text-base sm:text-lg mb-10 max-w-lg mx-auto">
-              Your project could be the next case study. Let's build something remarkable.
+            <h2 className="font-heading font-bold text-4xl sm:text-6xl mb-6">Have a project in mind?</h2>
+            <p className="font-body text-white/80 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+              We partner with ambitious teams to build digital products that scale. Let's discuss your next big idea.
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 bg-white text-black font-heading font-semibold text-sm px-8 py-4 rounded-2xl hover:bg-neutral-100 transition-colors"
-            >
-              Start a Project
-              <ArrowUpRight size={16} weight="bold" />
+            <Link to="/contact" className="inline-flex items-center gap-2 bg-white text-black font-heading font-semibold text-sm px-8 py-4 rounded-xl hover:bg-neutral-100 transition-colors">
+              Start a Conversation <ArrowUpRight size={16} weight="bold" />
             </Link>
           </Reveal>
         </div>
       </section>
+
+      {/* Project Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6"
+          >
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedProject(null)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
+            />
+            
+            {/* Modal Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative w-full max-w-3xl max-h-[90vh] bg-white rounded-3xl overflow-hidden flex flex-col shadow-2xl"
+            >
+              {/* Top Image */}
+              <div className="w-full h-64 sm:h-80 bg-neutral-100 relative overflow-hidden shrink-0">
+                {selectedProject.image ? (
+                  <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-200 to-neutral-300">
+                    <span className="text-neutral-400 font-heading font-medium">No Image Available</span>
+                  </div>
+                )}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-4 right-4 w-10 h-10 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors"
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+
+              {/* Bottom Card */}
+              <div className="p-6 sm:p-10 flex-1 overflow-y-auto bg-white rounded-t-3xl relative -mt-6">
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {selectedProject.tags.map(t => (
+                    <span key={t} className="text-xs font-body font-medium px-3 py-1.5 rounded-full bg-neutral-100 text-neutral-600">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                
+                <h3 className="font-heading font-bold text-3xl sm:text-4xl text-black mb-4">
+                  {selectedProject.title}
+                </h3>
+                
+                <p className="text-neutral-600 font-body text-base leading-relaxed mb-8">
+                  {selectedProject.description}
+                </p>
+
+                {selectedProject.metrics && selectedProject.metrics.length > 0 && (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-8 pt-8 border-t border-black/5">
+                    {selectedProject.metrics.map(m => (
+                      <div key={m.label}>
+                        <p className="text-xl sm:text-2xl font-display text-black mb-1">{m.value}</p>
+                        <p className="text-xs text-neutral-500 font-body">{m.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {selectedProject.link && (
+                  <a
+                    href={selectedProject.link.startsWith('http') ? selectedProject.link : `https://${selectedProject.link}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 bg-[#058789] text-white font-heading font-semibold text-sm px-8 py-4 rounded-xl hover:bg-[#046e70] transition-colors w-full sm:w-auto"
+                  >
+                    Visit Website
+                    <ArrowUpRight size={16} weight="bold" />
+                  </a>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </div>
