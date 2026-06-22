@@ -104,7 +104,14 @@ const CardSwap: React.FC<CardSwapProps> = ({
     const total = refs.length;
     refs.forEach((r, i) => placeNow(r.current!, makeSlot(i, cardDistance, verticalDistance, total), skewAmount));
 
+    let isVisible = false;
+    const observer = new IntersectionObserver((entries) => {
+      isVisible = entries[0].isIntersecting;
+    });
+    if (container.current) observer.observe(container.current);
+
     const swap = () => {
+      if (!isVisible) return;
       if (order.current.length < 2) return;
 
       const [front, ...rest] = order.current;
@@ -181,9 +188,13 @@ const CardSwap: React.FC<CardSwapProps> = ({
         node.removeEventListener('mouseenter', pause);
         node.removeEventListener('mouseleave', resume);
         clearInterval(intervalRef.current);
+        observer.disconnect();
       };
     }
-    return () => clearInterval(intervalRef.current);
+    return () => {
+      clearInterval(intervalRef.current);
+      observer.disconnect();
+    };
   }, [cardDistance, verticalDistance, delay, pauseOnHover, skewAmount, easing]);
 
   const rendered = childArr.map((child, i) =>

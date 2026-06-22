@@ -14,6 +14,7 @@ import { Reveal } from '../components/ui/Button'
 import { SEO } from '../components/ui/SEO'
 import DOMCircularGallery from '../components/ui/DOMCircularGallery'
 import CardSwap, { Card } from '../components/ui/CardSwap'
+import { FaUser } from 'react-icons/fa6'
 
 /* ── Data ─────────────────────────────────────────────────────────── */
 const heroFeatureCards = [
@@ -64,38 +65,38 @@ const services = [
 
 const projects = [
   {
-    title: 'FinTrack Pro',
-    category: 'Web Platform',
-    description: 'A real-time financial analytics dashboard for enterprise teams.',
-    color: 'bg-white text-black border border-black/10',
-    accent: 'text-[#058789]',
+    title: 'ELAY Beauty',
+    category: 'Web App',
+    description: "Premium hair braiding, natural styling, and children's care by EL.AY Beauty. Where artistry meets effortless booking.",
+    color: 'bg-black text-white',
+    accent: 'text-[#FDE047]',
     span: 'lg:col-span-2',
+    darkText: false,
+  },
+  {
+    title: 'iléSure',
+    category: 'Web Platform',
+    description: 'A verified housing and roommate discovery platform designed to help students and individuals find verified accommodation near their destination.',
+    color: 'bg-white text-black border border-black/10',
+    accent: 'text-[#34D399]',
+    span: '',
     darkText: true,
   },
   {
-    title: 'MediFlow AI',
-    category: 'AI Product',
-    description: 'Intelligent patient management powered by LLMs.',
-    color: 'bg-black text-white',
-    accent: 'text-[#058789]',
+    title: 'Safe Route Ai',
+    category: 'AI Platform',
+    description: 'A cutting-edge AI and real-time data Platform that analyzes routes for potential hazards, providing you with the safest possible path to your destination.',
+    color: 'bg-[#052e16] text-white',
+    accent: 'text-[#86EFAC]',
     span: '',
     darkText: false,
   },
   {
-    title: 'NomadOS',
-    category: 'Mobile App',
-    description: 'A remote-work productivity suite for distributed teams.',
-    color: 'bg-neutral-900 text-white',
-    accent: 'text-[#058789]',
-    span: '',
-    darkText: false,
-  },
-  {
-    title: 'EcoRoute',
-    category: 'Web + Mobile',
-    description: 'Carbon-footprint tracking platform for supply chains.',
+    title: 'Outbreak IQ',
+    category: 'AI Healthcare',
+    description: 'Uses advanced data analytics and AI to forecast disease outbreak risks (cholera, malaria, ebola, COVID-19) in Nigeria.',
     color: 'bg-white text-black border border-black/10',
-    accent: 'text-[#058789]',
+    accent: 'text-[#A78BFA]',
     span: 'lg:col-span-2',
     darkText: true,
   },
@@ -104,18 +105,18 @@ const projects = [
 const testimonials = [
   {
     quote: 'Waltik Labs didn\'t just build our product — they transformed how we think about software. Exceptional quality, exceptional team.',
-    name: 'Sarah Chen',
-    role: 'CEO, FinTrack Pro',
+    name: 'CEO',
+    role: 'iléSure Technologies',
   },
   {
     quote: 'The level of craft and attention to detail was unlike anything we\'ve seen. Our users noticed immediately.',
-    name: 'Marcus Okafor',
-    role: 'CTO, MediFlow AI',
+    name: 'Dr. V.B Oyekunle',
+    role: 'HOD, Computer Science Department, Lead City University',
   },
   {
     quote: 'On-time, on-budget, and the final product exceeded every expectation. We\'ll be working with them again.',
-    name: 'Priya Sharma',
-    role: 'Head of Product, EcoRoute',
+    name: 'Convener',
+    role: 'Build With Oyo',
   },
 ]
 
@@ -449,7 +450,7 @@ export default function Home() {
                     <div className="flex items-center gap-4 pt-4 border-t border-black/5 relative z-10">
                       <div className="w-10 h-10 flex items-center justify-center text-[#058789]">
                         <span className="font-heading font-bold text-sm text-[#058789]">
-                          {t.name.charAt(0)}
+                          <FaUser />
                         </span>
                       </div>
                       <div>

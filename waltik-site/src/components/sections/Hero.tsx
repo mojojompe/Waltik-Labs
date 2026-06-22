@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { TypewriterText } from '../ui/TypewriterText'
 import Navbar from '../layout/Navbar'
 export interface FeatureCard {
   icon: React.ElementType
@@ -20,57 +19,6 @@ export interface HeroProps {
   floatingCardHref: string
 }
 
-/* ── Animated background ─────────────────────────────────────────── */
-function HeroBackground() {
-  return (
-    <div className="absolute inset-0 rounded-[32px] overflow-hidden pointer-events-none" aria-hidden="true">
-      {/* Dot grid */}
-      <div className="absolute inset-0 dot-grid opacity-50" />
-
-      {/* Teal gradient blob top-right */}
-      <div
-        className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.07]"
-        style={{ background: 'radial-gradient(circle, #058789 0%, transparent 70%)' }}
-      />
-
-      {/* Floating geo circles */}
-      {[
-        { size: 260, top: '12%', left: '58%', delay: 0, opacity: 0.04, border: '#058789' },
-        { size: 160, top: '62%', left: '18%', delay: 1.8, opacity: 0.03, border: '#000' },
-        { size: 100, top: '22%', left: '82%', delay: 3.2, opacity: 0.05, border: '#058789' },
-        { size: 70, top: '78%', left: '70%', delay: 2.4, opacity: 0.06, border: '#000' },
-      ].map((s, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full border"
-          style={{ width: s.size, height: s.size, top: s.top, left: s.left, opacity: s.opacity, borderColor: s.border }}
-          animate={{ y: [0, -16, 0], rotate: [0, 6, 0] }}
-          transition={{ duration: 7 + i * 1.6, delay: s.delay, repeat: Infinity, ease: 'easeInOut' }}
-        />
-      ))}
-
-      {/* Grid cross lines */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.025]" aria-hidden>
-        <line x1="0" y1="100%" x2="100%" y2="0" stroke="black" strokeWidth="1" />
-      </svg>
-    </div>
-  )
-}
-
-/* ── Letter animation variants ───────────────────────────────────── */
-const letterVariant = {
-  hidden: { opacity: 0, y: -200, scale: 0.9 },
-  show: (i: number) => ({
-    opacity: 1, y: 0, scale: 1,
-    transition: {
-      type: "spring",
-      bounce: 0.45,
-      duration: 2.0,
-      delay: 0.1 + i * 0.15,
-    },
-  }),
-} as any
-
 const fadeUp = {
   hidden: { opacity: 0, y: 15 },
   show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } },
@@ -78,7 +26,7 @@ const fadeUp = {
 
 const stagger = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.05, delayChildren: 0.3 } },
+  show: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
 } as any
 
 export default function Hero({
@@ -91,8 +39,6 @@ export default function Hero({
   floatingCardCta,
   floatingCardHref,
 }: HeroProps) {
-  const letters = word.split('')
-
   return (
     <section className="px-3 sm:px-4 pt-3 pb-6 min-h-screen flex flex-col">
       {/* Hero card */}
@@ -100,11 +46,21 @@ export default function Hero({
         className="relative flex-1 bg-white rounded-[32px] border border-black/5 flex flex-col overflow-hidden"
         style={{ minHeight: '88vh', boxShadow: 'var(--shadow-hero)' } as React.CSSProperties}
       >
+        <div className="absolute inset-0 rounded-[32px] overflow-hidden pointer-events-none" aria-hidden="true">
+          {/* Dot grid */}
+          <div className="absolute inset-0 dot-grid opacity-50" />
+          
+          {/* Teal gradient blob top-right */}
+          <div
+            className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full opacity-[0.07]"
+            style={{ background: 'radial-gradient(circle, #058789 0%, transparent 70%)' }}
+          />
+        </div>
+
         <div
           className="relative flex-1 flex flex-col overflow-hidden"
           style={{ borderRadius: '32px' }}
         >
-          <HeroBackground />
 
           {/* Navbar inside hero */}
           <div className="relative z-20 px-5 sm:px-8 pt-5 sm:pt-6">
@@ -122,7 +78,7 @@ export default function Hero({
             >
               <span className="flex items-center justify-start gap-3 text-[11px] sm:text-xs font-body font-semibold tracking-[0.2em] sm:tracking-[0.22em] uppercase text-black/60">
                 <span className="w-4 sm:w-6 h-px bg-[#058789] inline-block opacity-60" />
-                <span className="text-left"><TypewriterText text={headline} /></span>
+                <span className="text-left">{headline}</span>
               </span>
             </motion.div>
 
@@ -135,23 +91,14 @@ export default function Hero({
                 className="hero-word"
                 aria-label={word}
               >
-                {letters.map((letter, i) => (
-                  <motion.span
-                    key={i}
-                    custom={i}
-                    variants={letterVariant}
-                    initial="hidden"
-                    animate="show"
-                    className="inline-block"
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      display: 'inline-block',
-                      WebkitFontSmoothing: 'antialiased'
-                    }}
-                  >
-                    {letter}
-                  </motion.span>
-                ))}
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                  className="inline-block"
+                >
+                  {word}
+                </motion.span>
               </h1>
             </div>
 
