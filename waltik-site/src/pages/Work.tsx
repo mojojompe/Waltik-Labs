@@ -33,6 +33,18 @@ export interface ProjectType {
 
 const projects: ProjectType[] = [
   {
+    title: 'ELAY Beauty',
+    category: 'Web',
+    tags: ['Beauty', 'Booking', 'Styling'],
+    description: "Premium hair braiding, natural styling, and children's care by EL.AY Beauty. Where artistry meets effortless booking.",
+    metrics: [{ label: 'Experience', value: 'Premium' }, { label: 'Booking', value: 'Seamless' }],
+    color: '#1F1209',
+    accent: '#FDE047',
+    span: 'sm:col-span-2',
+    image: '/Projects/ELAY Beauty.png',
+    link: 'https://elay-beauty.vercel.app/'
+  },
+  {
     title: 'iléSure',
     category: 'Web',
     tags: ['Platform', 'Real Estate', 'Accommodation'],
@@ -40,7 +52,7 @@ const projects: ProjectType[] = [
     metrics: [{ label: 'Users', value: '5K+' }, { label: 'Listings', value: '500+' }],
     color: '#0A0A0A',
     accent: '#34D399',
-    span: 'sm:col-span-2',
+    span: '',
     image: '/Projects/ilesure.png',
     link: 'https://ilesure.com'
   },
