@@ -168,6 +168,7 @@
   margin-top: auto;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 6px;
 }
 
@@ -180,19 +181,18 @@
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: flex-start;
+  gap: 4px;
 
-  /* Inner Card Styling */
-  padding: 10px 14px;
-  background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
+  /* Grid styling for 2 per row */
+  flex: 1 1 calc(50% - 6px);
+  max-width: calc(50% - 3px);
+  padding: 4px 0;
 }
 
 .nav-card-link:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
+  opacity: 0.8;
 }
 
 .nav-card-link-icon {

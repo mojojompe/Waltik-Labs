@@ -92,7 +92,7 @@ const cardNavItems = [
   },
   {
     label: 'Investors',
-    bgColor: '#f3f4f6',
+    bgColor: '#e5e7eb',
     textColor: '#000',
     links: [
       { label: 'Overview', href: '/investors', ariaLabel: 'Investors Overview' },

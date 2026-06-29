@@ -65,15 +65,15 @@ const CardNav = ({
 
   const calculateHeight = () => {
     const navEl = navRef.current
-    if (!navEl) return 280
+    if (!navEl) return 300
 
     const isMobile = window.matchMedia('(max-width: 768px)').matches
     if (isMobile) {
       // Just return a safe, generous height to prevent cutoff on mobile
       // since the content relies on flex layout.
-      return 460
+      return 520
     }
-    return 248
+    return 280
   }
 
   const createTimeline = () => {
@@ -198,8 +198,8 @@ const CardNav = ({
                     aria-label={lnk.ariaLabel}
                     style={{ color: item.textColor }}
                   >
-                    <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                     {lnk.label}
+                    <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                   </Link>
                 ))}
               </div>
