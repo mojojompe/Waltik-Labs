@@ -46,10 +46,13 @@ const team: TeamMember[] = [
     biography: (
       <>
         <p>
-          Kamsiriochi Ivanna Richard is a visionary leader with a profound background in management and finance. He steers Waltik Labs towards strategic growth, ensuring innovation remains at the core of all operations. Under his leadership, the company has scaled its capabilities and continues to deliver outstanding value to its clients and partners.
+          Kamsi Richard is a lover of economics, biographies, and female centered entertainment ; a systems thinker, tech consultant, and project manager with a passion for financial optimization and solving complex business problems. As a first-class Software Engineering student and co-founder of Waltik Labs, she enjoys helping organizations bridge the gap between technology and business strategy.
         </p>
         <p>
-          Further details are currently being updated and will be available soon.
+          Her interests span management consulting, systems thinking, SAP consulting, business analysis, and digital transformation, where she combines analytical thinking with a structured, people-centered approach to solving challenges. Fascinated by the politics, dynamics, and rules of business, she enjoys understanding how organizations make decisions, adapt to change, and create lasting value.
+        </p>
+        <p>
+          Beyond work, Kamsi is passionate about continuous learning, leadership, finance, and building a career with international impact through meaningful work, travel, and lifelong growth.
         </p>
       </>
     ),
